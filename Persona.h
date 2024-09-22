@@ -11,5 +11,6 @@ public:
 	string getNombre();
 	void setNombre();
 	string toString();
+	virtual horario* getagenda() = 0;
+	virtual coleccionMascotas* getpacientes() = 0;
 };
-
