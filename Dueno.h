@@ -1,28 +1,19 @@
 #pragma once
 #include <iostream>
 #include <sstream>
-#include "Mascota.h"
-class Dueno{
+#include "coleccionMascotas.h"
+#include "Persona.h"
+
+class Dueno : public Persona {
 private:
-    string nombre;
-    string direccion;
-    Mascota** mascotas;
-    int cantidadMascotas;
-    int capacidadMascotas;
-
+    coleccionMascotas* MascotaDueno;  // Colección de mascotas del dueño
 public:
-    Dueno(string nom, string dir, int capacidad = 5);
+    Dueno(string, string);
     ~Dueno();
-
-    string getNombre() const;
-    void setNombre(string nom);
-
-    string getDireccion() const;
-    void setDireccion(string dir);
-
-    void agregarMascota(Mascota* nuevaMascota);
+    coleccionMascotas* getmascotas();
+    void setmascotas(coleccionMascotas*);
+    bool agregarMascota(Mascota& nuevaMascota);
     string listarMascotas() const;
     Mascota* buscarMascota(string nombreMascota);
     string toString() const;
 };
-

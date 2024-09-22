@@ -5,10 +5,15 @@
 class Persona{
 protected:
 	string nombre;
+	string cedula;
 public:
-	Persona(string);
+	Persona(string, string);
 	~Persona();
 	string getNombre();
-	void setNombre(string);
+	string getCedula();
+	virtual coleccionMascotas* getMascotas() = 0;
+	virtual string toStringMascotas() = 0;
+	virtual string toStringDueno() = 0;
+
 	string toString();
 };

@@ -140,8 +140,10 @@ void InterfazDeUsuario::mostrarSubmenuBusquedasYListados() {
 
 void InterfazDeUsuario::ingresarEspecialidad() {
 	system("cls");
+    string esp;
     cout << "Funcion para ingresar una especialidad." << endl;
-    // Implementar l�gica
+    cout << "Ingrese especialidad: ";
+    cin >> esp;
 }
 
 void InterfazDeUsuario::ingresarDoctor() {

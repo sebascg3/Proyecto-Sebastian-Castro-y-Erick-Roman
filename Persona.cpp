@@ -1,26 +1,12 @@
 #include "Persona.h"
 
-Persona::Persona(string nom)
-{
-	nombre = nom;
-}
-
-Persona::~Persona()
-{
-}
-
-string Persona::getNombre()
-{
-
-	return string();
-}
-
-void Persona::setNombre(string)
-{
-}
-
+Persona::Persona(string ced, string nom) :cedula(ced), nombre(nom) {}
+Persona::~Persona() {}
+string Persona::getCedula() { return cedula; }
+string Persona::getNombre() { return nombre; }
 string Persona::toString(){
 	stringstream s;
 	s << "Nombre: " << nombre;
+	s << "Cedula: " << cedula;
 	return s.str();
 }

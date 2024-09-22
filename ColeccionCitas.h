@@ -1,16 +1,18 @@
 #pragma once
-#include <vector>
 #include <sstream>
 #include "Cita.h"
 #include "Mascota.h"
 class ColeccionCitas {
 private:
-    vector<Cita*> citas;
+    Cita** citas;
+    int can;
+    int tam;
+
 public:
-    ColeccionCitas();
+    ColeccionCitas(int);
     ~ColeccionCitas();
     void agregarCita(Cita* cita);
     void eliminarCita(Cita* cita);
-    bool hayCitaChocante(Cita* cita);
+    bool hayCitaChocante(Cita* cita)const;
     string toString() const;
 };
