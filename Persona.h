@@ -4,8 +4,8 @@
 
 class Persona{
 protected:
-	string nombre;
 	string cedula;
+	string nombre;
 public:
 	Persona(string, string);
 	~Persona();
@@ -15,5 +15,5 @@ public:
 	virtual string toStringMascotas() = 0;
 	virtual string toStringDueno() = 0;
 
-	string toString();
+	string toString() const;
 };

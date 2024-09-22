@@ -1,60 +1,48 @@
 #include "Doctor.h"
 
-Doctor::Doctor(string nom, Especialidad& esp) : Persona(nom), agenda(new horario()), capacidadPacientes(5), cantidadPacientes(0) {
-    especializacion = &esp;
-    pacientes = new Mascota * [capacidadPacientes];
+Doctor::Doctor(string nom, string ced, int t)
+    : Persona(nom, ced), agenda(new horario()), tamPacientes(t), canPacientes(0) {
+    pacientes = new Mascota * [tamPacientes];
+    for (int i = 0; i < tamPacientes; ++i) {
+        pacientes[i] = nullptr;
+    }
 }
 
 Doctor::~Doctor() {
     delete agenda;
-    for (int i = 0; i < cantidadPacientes; ++i) {
+    for (int i = 0; i < canPacientes; ++i) {
         delete pacientes[i];
     }
     delete[] pacientes;
-}
-
-string Doctor::getNombre() const {
-    return this->nombre;
-}
-
-void Doctor::setNombre(string nom) {
-    this->nombre = nom;
-}
-
-string Doctor::getEspecializacion() const {
-    return this->especializacion->getNombre();
-}
-
-void Doctor::setEspecializacion(Especialidad* esp) {
-    this->especializacion = esp;
 }
 
 horario* Doctor::getAgenda() {
     return agenda;
 }
 
-void Doctor::agregarPaciente(Mascota* nuevaMascota) {
-    if (cantidadPacientes == capacidadPacientes) {
-        redimensionarPacientes();  // Redimensionar si es necesario
+coleccionMascotas* Doctor::getPacientes(){
+    coleccionMascotas* coleccion = new coleccionMascotas(canPacientes);
+    for (int i = 0; i < canPacientes; ++i) {
+        coleccion->ingresarMascota(*pacientes[i]); // Suponiendo que agregarMascota acepta una referencia
     }
-    pacientes[cantidadPacientes++] = nuevaMascota;
+    return coleccion;
 }
 
-void Doctor::redimensionarPacientes() {
-    int nuevaCapacidad = capacidadPacientes * 2;
-    Mascota** nuevoArreglo = new Mascota * [nuevaCapacidad];
-    for (int i = 0; i < cantidadPacientes; ++i) {
-        nuevoArreglo[i] = pacientes[i];
+void Doctor::agregarPaciente(Mascota* nuevaMascota) {
+    if (canPacientes < tamPacientes) {
+        pacientes[canPacientes++] = nuevaMascota;
     }
-    delete[] pacientes;
-    pacientes = nuevoArreglo;
-    capacidadPacientes = nuevaCapacidad;
+    else {
+        cout << "No se pueden agregar más pacientes. Límite alcanzado." << endl;
+    }
 }
 
 string Doctor::buscarPacientes() const {
     stringstream s;
-    for (int i = 0; i < cantidadPacientes; ++i) {
-        s << pacientes[i]->toString() << endl;
+    for (int i = 0; i < canPacientes; ++i) {
+        if (pacientes[i] != nullptr) {
+            s << pacientes[i]->toString() << endl;
+        }
     }
     return s.str();
 }
@@ -67,8 +55,7 @@ string Doctor::mostrarAgenda() {
 
 string Doctor::toString() const {
     stringstream s;
-    s << "Doctor: " << this->getNombre() << endl;
-    s << "Especialización: " << this->getEspecializacion() << endl;
+    s << Persona::toString();
     s << "Pacientes:\n" << buscarPacientes();
     return s.str();
 }

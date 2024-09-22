@@ -1,11 +1,10 @@
 #include "Dueno.h"
 
-Dueno::Dueno(string nom, string ced) : Persona(nom, ced) {
-    MascotaDueno = new coleccionMascotas();  // Inicializar la colección de mascotas
+Dueno::Dueno(string ced, string nom,int nm) : Persona(ced, nom) {
+    MascotaDueno = new coleccionMascotas(nm);
 }
-
 Dueno::~Dueno() {
-    delete MascotaDueno;  // Liberar la memoria de la colección de mascotas
+    delete MascotaDueno;  
 }
 
 coleccionMascotas* Dueno::getmascotas() {
@@ -29,7 +28,7 @@ Mascota* Dueno::buscarMascota(string nombreMascota) {
 
 string Dueno::toString() const {
     stringstream s;
-    s << "Dueño: " << this->getNombre() << endl;
+    s << Persona::toString();
     s << "Mascotas:\n" << listarMascotas();  // Llamar a listarMascotas
     return s.str();
 }

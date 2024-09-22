@@ -10,19 +10,14 @@ using namespace std;
 class Doctor : public Persona {
 private:
     horario* agenda;
-    Mascota** pacientes;  
-    int cantidadPacientes; 
-    int capacidadPacientes; 
+    Mascota** pacientes;
+    int canPacientes;
+    int tamPacientes;
 public:
-    Doctor(string nom, Especialidad& esp);
+    Doctor(string, string, int);
     ~Doctor();
-
-    string getNombre() const;
-    void setNombre(string nom);
-    string getEspecializacion() const;
-    void setEspecializacion(Especialidad* esp);
     horario* getAgenda();
-
+    coleccionMascotas* getPacientes();
     void agregarPaciente(Mascota* nuevaMascota);
     string buscarPacientes() const;
     string mostrarAgenda();

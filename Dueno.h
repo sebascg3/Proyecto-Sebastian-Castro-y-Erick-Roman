@@ -8,7 +8,7 @@ class Dueno : public Persona {
 private:
     coleccionMascotas* MascotaDueno;  // Colección de mascotas del dueño
 public:
-    Dueno(string, string);
+    Dueno(string ced, string nom,int);
     ~Dueno();
     coleccionMascotas* getmascotas();
     void setmascotas(coleccionMascotas*);
