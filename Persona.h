@@ -9,8 +9,6 @@ public:
 	Persona(string);
 	~Persona();
 	string getNombre();
-	void setNombre();
+	void setNombre(string);
 	string toString();
-	virtual horario* getagenda() = 0;
-	virtual coleccionMascotas* getpacientes() = 0;
 };
