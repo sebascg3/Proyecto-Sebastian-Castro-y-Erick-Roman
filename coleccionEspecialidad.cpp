@@ -1,7 +1,7 @@
 #include "coleccionEspecialidad.h"
-
-ColeccionEspecialidad::ColeccionEspecialidad(int t){
-    tam = t;
+#define cm 100
+ColeccionEspecialidad::ColeccionEspecialidad(){
+    tam = cm;
     can = 0;
     especialidades = new Especialidad * [tam];
         for (int i = 0; i < tam; i++) {
@@ -29,15 +29,16 @@ if(can< tam){
         }
 }
 
-string ColeccionEspecialidad::mostrarEspecialidades(){
+string ColeccionEspecialidad::mostrarEspecialidades() {
     stringstream s;
     for (int i = 0; i < can; i++) {
-	    if (especialidades[i] != nullptr) {
-		    s << "#" << i+1 <<" "<<especialidades[i]->toString() << endl;
-            return s.str();
+        if (especialidades[i] != nullptr) {
+            s << "#" << i + 1 << " " << especialidades[i]->toString() << endl;
         }
     }
+    return s.str(); 
 }
+
 
 string ColeccionEspecialidad::DoctorporEspecialidades(string e){
     stringstream s;

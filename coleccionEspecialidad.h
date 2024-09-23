@@ -6,7 +6,7 @@ private:
     int tam;
     int can;
 public:
-    ColeccionEspecialidad(int t);
+    ColeccionEspecialidad();
     ~ColeccionEspecialidad();
     bool agregarEspecialidad(Especialidad&);
     string mostrarEspecialidades();
