@@ -1,5 +1,5 @@
 #pragma once
-#include "coleccionEspecialidad.h"
+
 #include <string>
 #include "coleccionMascotas.h"
 #include "horario.h"
@@ -10,16 +10,26 @@ using namespace std;
 class Doctor : public Persona {
 private:
     horario* agenda;
-    Mascota** pacientes;
-    int canPacientes;
-    int tamPacientes;
+    coleccionMascotas* pacientes;
+ 
 public:
-    Doctor(string, string, int);
+    Doctor(string, string);
     ~Doctor();
-    horario* getAgenda();
-    coleccionMascotas* getPacientes();
-    void agregarPaciente(Mascota* nuevaMascota);
-    string buscarPacientes() const;
-    string mostrarAgenda();
-    string toString() const;
+    horario* getagenda();
+    coleccionMascotas* getMascotas();
+    void setmascotas(coleccionMascotas*);
+    bool ingresaMascota(Mascota& m);
+    Mascota* buscarMascotaNombre(string n);
+    coleccionMascotas* getmascotas();
+    string toStringMascotas();
+    coleccionMascotas* getpacientes();
+    void agregarpaciente(Mascota& nuevaMascota);
+    string buscarPacientes() ;
+    string mostraragenda();
+    string toStringDueno();
+    string toString() ;
+    void eliminarhoracita(string, string);
+    void liberarhoracita(string a, string b);
+    string mostrarPacientes();
+    string listarMascotas();
 };

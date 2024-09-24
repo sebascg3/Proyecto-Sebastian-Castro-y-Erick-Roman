@@ -6,14 +6,26 @@
 
 class Dueno : public Persona {
 private:
-    coleccionMascotas* MascotaDueno;  // Colección de mascotas del dueño
+    coleccionMascotas* MascotaDueno;
 public:
-    Dueno(string ced, string nom,int);
-    ~Dueno();
+    Dueno(string ced, string nom);
+   ~Dueno();
     coleccionMascotas* getmascotas();
     void setmascotas(coleccionMascotas*);
-    bool agregarMascota(Mascota& nuevaMascota);
-    string listarMascotas() const;
-    Mascota* buscarMascota(string nombreMascota);
-    string toString() const;
+   bool ingresaMascota(Mascota& nuevaMascota);
+   string listarMascotas();
+  
+    Mascota* buscarMascotaNombre(string nombredemascota);
+    string toString();
+
+    string toStringDueno();
+
+   coleccionMascotas* getpacientes();
+   void agregarpaciente(Mascota& m);
+   string mostrarPacientes();
+   void eliminarhoracita(string, string);
+   string mostraragenda();
+   void liberarhoracita(string d, string);
+   horario* getagenda();
+  
 };

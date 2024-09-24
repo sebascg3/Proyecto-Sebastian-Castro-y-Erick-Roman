@@ -1,14 +1,17 @@
 #pragma once
 #include "Especialidad.h"
-class ColeccionEspecialidad{
+class coleccionEspecialidad{
 private:
-    Especialidad**  especialidades;
-    int tam;
-    int can;
+	Especialidad** Especialidades;
+	int tam;
+	int can;
 public:
-    ColeccionEspecialidad();
-    ~ColeccionEspecialidad();
-    bool agregarEspecialidad(Especialidad&);
-    string mostrarEspecialidades();
-	string DoctorporEspecialidades(string);
+	coleccionEspecialidad();
+	~coleccionEspecialidad();
+	bool Insertarespecialidad(Especialidad&);
+	string mostrarEspecialidades();
+	string mostrarDoctorporEspecialidades(string);
+	Especialidad* buscarespecialidad(string);
 };
+
+

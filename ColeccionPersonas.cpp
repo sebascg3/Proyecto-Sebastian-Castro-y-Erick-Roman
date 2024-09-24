@@ -1,8 +1,6 @@
 #include "ColeccionPersonas.h"
-
-ColeccionPersonas::ColeccionPersonas(int t){
-	can = 0;
-	tam = t;
+#define cm 1000
+ColeccionPersonas::ColeccionPersonas() :can(0), tam(cm) {
 	personas = new Persona * [tam];
 	for (int i = 0; i < tam; i++) {
 		personas[i] = nullptr;
@@ -13,18 +11,18 @@ ColeccionPersonas::~ColeccionPersonas(){
 	delete[] personas;
 }
 
-bool ColeccionPersonas::agregarDoctor(Persona& p) {
+bool ColeccionPersonas::agregarDoctor(Persona& persona) {
 
-	if (p.getMascotas() != nullptr) {
+	if (persona.getmascotas() != nullptr) {
 		return false;
 	}
 	for (int i = 0; i < can; i++) {
-		if (personas[i] != nullptr && personas[i]->getCedula() == p.getCedula()) {
+		if (personas[i] != nullptr && personas[i]->getCedula() == persona.getCedula()) {
 			return false;
 		}
 	}
 	if (can < tam) {
-		personas[can++] = (Persona*)&p;
+		personas[can++] = (Persona*)&persona;
 		can++;
 		return true;
 	}
@@ -32,7 +30,7 @@ bool ColeccionPersonas::agregarDoctor(Persona& p) {
 }
 
 bool ColeccionPersonas::ingresarDueno(Persona& p){
-	if (p.getMascotas() == nullptr) {
+	if (p.getmascotas() == nullptr) {
 		return false;
 	}
 	for (int i = 0; i < can; i++) {
@@ -58,10 +56,38 @@ string ColeccionPersonas::mostrarDuenos()
 {
 	stringstream s;
 	for (int i = 0; i < can; i++) {
-		if (personas[i] != nullptr && personas[i]->getMascotas() != nullptr) {
+		if (personas[i] != nullptr && personas[i]->getmascotas() != nullptr) {
 			s << personas[i]->toStringDueno();
-			s << personas[i]->toStringMascotas();
+			s << personas[i]->listarMascotas();
 		}
 	}
 	return s.str();
+}
+
+string ColeccionPersonas::mostrarDoctores() {
+	stringstream s;
+	for (int i = 0; i < can; i++) {
+		if (personas[i] != nullptr && personas[i]->getmascotas() == nullptr) {  
+			s << personas[i]->toString() << endl; 
+		}
+	}
+	return s.str();
+}
+
+Persona* ColeccionPersonas::buscarPersonaCedula(string cedula) {
+	for (int i = 0; i < can; i++) {
+		if (personas[i] != nullptr && personas[i]->getCedula() == cedula) {
+			return personas[i]; 
+		}
+	}
+	return nullptr;  
+}
+
+Persona* ColeccionPersonas::buscarPersonaNombre(string nombre) {
+	for (int i = 0; i < can; i++) {
+		if (personas[i] != nullptr && personas[i]->getNombre() == nombre) {
+			return personas[i];  
+		}
+	}
+	return nullptr; 
 }

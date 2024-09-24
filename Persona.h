@@ -8,12 +8,22 @@ protected:
 	string nombre;
 public:
 	Persona(string, string);
-	~Persona();
-	string getNombre();
-	string getCedula();
-	virtual coleccionMascotas* getMascotas() = 0;
-	virtual string toStringMascotas() = 0;
+	virtual ~Persona();
+	virtual string getNombre();
+	virtual string getCedula();
+	virtual coleccionMascotas* getmascotas() = 0;
+	virtual string listarMascotas() = 0;
 	virtual string toStringDueno() = 0;
+	virtual horario* getagenda() = 0;
+	virtual coleccionMascotas* getpacientes() = 0;
+	virtual void setmascotas(coleccionMascotas*) = 0;
+	virtual bool ingresaMascota(Mascota& m) = 0;
+	virtual Mascota* buscarMascotaNombre(string n) = 0;
+	virtual void agregarpaciente(Mascota& m) = 0;
+	virtual string mostrarPacientes() = 0;
+	virtual void eliminarhoracita(string, string) = 0;
+	virtual string mostraragenda() = 0;
+	virtual void liberarhoracita(string, string) = 0;
 
-	string toString() const;
+	virtual string toString() const;
 };

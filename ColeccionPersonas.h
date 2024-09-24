@@ -8,7 +8,7 @@ private:
 	int tam;
 	int can;
 public:
-	ColeccionPersonas(int);
+	ColeccionPersonas();
 	~ColeccionPersonas();
 	bool agregarDoctor(Persona&);
 	bool ingresarDueno(Persona&);

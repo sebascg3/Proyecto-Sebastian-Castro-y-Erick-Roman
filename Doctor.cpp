@@ -1,61 +1,76 @@
 #include "Doctor.h"
+#define cm 100
 
-Doctor::Doctor(string nom, string ced, int t)
-    : Persona(nom, ced), agenda(new horario()), tamPacientes(t), canPacientes(0) {
-    pacientes = new Mascota * [tamPacientes];
-    for (int i = 0; i < tamPacientes; ++i) {
-        pacientes[i] = nullptr;
-    }
+Doctor::Doctor(string ced, string nom) : Persona(ced, nom), agenda(new horario()),pacientes(new coleccionMascotas()){
+
 }
-
+  
 Doctor::~Doctor() {
     delete agenda;
-    for (int i = 0; i < canPacientes; ++i) {
-        delete pacientes[i];
-    }
-    delete[] pacientes;
+    
 }
 
-horario* Doctor::getAgenda() {
+horario* Doctor::getagenda() {
     return agenda;
 }
 
-coleccionMascotas* Doctor::getPacientes(){
-    coleccionMascotas* coleccion = new coleccionMascotas(canPacientes);
-    for (int i = 0; i < canPacientes; ++i) {
-        coleccion->ingresarMascota(*pacientes[i]); // Suponiendo que agregarMascota acepta una referencia
-    }
-    return coleccion;
+coleccionMascotas* Doctor::getMascotas() {
+    return nullptr;
 }
 
-void Doctor::agregarPaciente(Mascota* nuevaMascota) {
-    if (canPacientes < tamPacientes) {
-        pacientes[canPacientes++] = nuevaMascota;
-    }
-    else {
-        cout << "No se pueden agregar más pacientes. Límite alcanzado." << endl;
-    }
-}
-
-string Doctor::buscarPacientes() const {
+string Doctor::toStringMascotas() {
     stringstream s;
-    for (int i = 0; i < canPacientes; ++i) {
-        if (pacientes[i] != nullptr) {
-            s << pacientes[i]->toString() << endl;
-        }
-    }
+   s<< pacientes->tostring();
+    
     return s.str();
 }
 
-string Doctor::mostrarAgenda() {
+coleccionMascotas* Doctor::getpacientes(){
+    return pacientes;
+}
+
+string Doctor::toStringDueno() {
+    return "";
+}
+
+void Doctor::agregarpaciente(Mascota& nuevaMascota) {
+    pacientes->ingresarMascota(nuevaMascota);
+}
+
+string Doctor::buscarPacientes()  {
+    stringstream s;
+    
+    return s.str();
+}
+
+string Doctor::mostraragenda() {
     stringstream s;
     s << agenda->mostrarHorario();
     return s.str();
 }
 
-string Doctor::toString() const {
+string Doctor::toString()  {
     stringstream s;
     s << Persona::toString();
     s << "Pacientes:\n" << buscarPacientes();
     return s.str();
 }
+void  Doctor::eliminarhoracita(string a, string b) {
+//
+}
+void Doctor::liberarhoracita(string a, string b) {
+    //
+}
+string Doctor::mostrarPacientes() {
+    stringstream s;
+    s << pacientes->tostring();
+    return s.str();
+
+}
+string Doctor::listarMascotas() {
+    return "";
+}
+void Doctor::setmascotas(coleccionMascotas*) {}
+bool Doctor::ingresaMascota(Mascota& m) { return false; }
+Mascota* Doctor::buscarMascotaNombre(string n) { return nullptr; }
+coleccionMascotas* Doctor::getmascotas() { return nullptr; }

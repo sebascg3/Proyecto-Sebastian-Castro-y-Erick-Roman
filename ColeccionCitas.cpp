@@ -1,9 +1,11 @@
 #include "ColeccionCitas.h"
-
-ColeccionCitas::ColeccionCitas(int t) : citas(nullptr), can(0), tam(t) {
-    citas = new Cita * [tam]; 
+#define cm 500
+ColeccionCitas::ColeccionCitas(int t) : citas(nullptr), can(0), tam(cm) {
+    citas = new Cita * [tam];
+    for (int i = 0; i < tam; i++) {
+        citas[i] = nullptr;
+    }
 }
-
 ColeccionCitas::~ColeccionCitas() {
     for (int i = 0; i < can; ++i) {
         delete citas[i];  

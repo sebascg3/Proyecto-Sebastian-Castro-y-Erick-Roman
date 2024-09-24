@@ -1,8 +1,6 @@
 #include "coleccionMascotas.h"
-
-coleccionMascotas::coleccionMascotas(int t){
-    tam=t;
-    can=0;
+#define cm 100
+coleccionMascotas::coleccionMascotas():can(0), tam(cm) {
     mascotas = new Mascota * [tam];
     for (int i = 0; i < tam; i++) {
 	mascotas[i] = nullptr;
