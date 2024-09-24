@@ -1,75 +1,52 @@
 #include "Dueno.h"
 
-Dueno::Dueno(string nom, string dir, int capacidad)
-    : nombre(nom), direccion(dir), cantidadMascotas(0), capacidadMascotas(capacidad) {
-    mascotas = new Mascota * [capacidadMascotas];
+Dueno::Dueno(string ced, string nom) : Persona(ced, nom) {
+    MascotaDueno = new coleccionMascotas();
 }
-
 Dueno::~Dueno() {
-    for (int i = 0; i < cantidadMascotas; ++i) {
-        delete mascotas[i];
-    }
-    delete[] mascotas;
+    delete MascotaDueno;  
 }
 
-string Dueno::getNombre() const {
-    return this->nombre;
+coleccionMascotas* Dueno::getmascotas() {
+    return MascotaDueno;
 }
 
-void Dueno::setNombre(string nom) {
-    this->nombre = nom;
+void Dueno::setmascotas(coleccionMascotas* md) {
+    MascotaDueno = md;
 }
 
-string Dueno::getDireccion() const {
-    return this->direccion;
+bool Dueno::ingresaMascota(Mascota& nuevaMascota) {
+    return MascotaDueno->ingresarMascota(nuevaMascota);
+}
+string Dueno::listarMascotas() {
+    return MascotaDueno->tostring();
 }
 
-void Dueno::setDireccion(string dir) {
-    this->direccion = dir;
+Mascota* Dueno::buscarMascotaNombre(string nombreMascota) {
+    return MascotaDueno->buscarMascota(nombreMascota);  
 }
 
-void Dueno::agregarMascota(Mascota* nuevaMascota) {
-    if (nuevaMascota == nullptr) {
-        return;
-    }
-
-    if (cantidadMascotas >= capacidadMascotas) {
-        capacidadMascotas *= 2;
-        Mascota** temp = new Mascota * [capacidadMascotas];
-
-        for (int i = 0; i < cantidadMascotas; ++i) {
-            temp[i] = mascotas[i];
-        }
-
-        delete[] mascotas;
-        mascotas = temp;
-    }
-
-        mascotas[cantidadMascotas++] = nuevaMascota;
-    
-}
-
-string Dueno::listarMascotas() const {
+string Dueno::toString()  {
     stringstream s;
-    for (int i = 0; i < cantidadMascotas; ++i) {
-        s << mascotas[i]->toString() << endl;
-    }
+    s << Persona::toString();
+    s << "Mascotas:\n" << listarMascotas();  
+    return s.str();
+}
+string Dueno::toStringDueno() {
+    stringstream s;
+    s << Persona::toString();
     return s.str();
 }
 
-Mascota* Dueno::buscarMascota(string nombreMascota){
-    for (int i = 0; i < cantidadMascotas; i++) {
-        if (mascotas[i]->getNombre() == nombreMascota) {
-            return mascotas[i]; // Retorna la mascota encontrada
-        }
-    }
-    return nullptr; // No se encontró la mascota
-}
+coleccionMascotas* Dueno::getpacientes() { return nullptr; }
+void Dueno::agregarpaciente(Mascota& m) {}
+string Dueno::mostrarPacientes() { return ""; }
+void Dueno::eliminarhoracita(string, string) {}
+string Dueno::mostraragenda() { return ""; }
+void Dueno::liberarhoracita(string d, string) {}
 
-string Dueno::toString() const {
-    stringstream s;
-    s << "Dueño: " << this->getNombre() << endl;
-    s << "Dirección: " << this->getDireccion() << endl;
-    s << this->listarMascotas();
-    return s.str();
+
+horario* Dueno::getagenda()
+{
+    return nullptr;
 }

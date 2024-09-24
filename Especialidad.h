@@ -1,16 +1,20 @@
 #pragma once
+#include "ColeccionPersonas.h"
 #include <iostream>
 #include <sstream>
-
 using namespace std;
-
-class Especialidad {
+class Especialidad{
 private:
-    string nombre;
 
+	string nombreEspecialidad;
+	ColeccionPersonas* doctores;
 public:
-    Especialidad(string nom);
-    string getNombre() const;
-    void setNombre(string nom);
-    string toString() const;
+	Especialidad(string);
+	~Especialidad();
+	string getNombreEsp();
+	ColeccionPersonas* getdoctores();
+	bool insertarDoc(Persona&);
+	string mostrardoctoresporEspecialidad();
+	string toStringEspecialidad();
 };
+

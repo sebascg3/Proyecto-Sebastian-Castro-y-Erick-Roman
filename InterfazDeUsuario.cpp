@@ -140,20 +140,33 @@ void InterfazDeUsuario::mostrarSubmenuBusquedasYListados() {
 
 void InterfazDeUsuario::ingresarEspecialidad() {
 	system("cls");
+    string esp;
     cout << "Funcion para ingresar una especialidad." << endl;
-    // Implementar l�gica
+    cout << "Ingrese especialidad: ";
+    cin >> esp;
 }
 
 void InterfazDeUsuario::ingresarDoctor() {
 	system("cls");
+    string cedula, nombre;
     cout << "Funcion para ingresar un doctor por especialidad." << endl;
-    // Implementar l�gica
+    cout << "Ingrese el nombre: ";
+    cin >> nombre;
+    cout << "Ingrese su numero de cedula: ";
+    cin >> cedula;
+    Persona* nuevoDoctor = new Doctor(cedula, nombre);
 }
 
 void InterfazDeUsuario::ingresarDueno() {
 	system("cls");
+    string nombre, cedula;
     cout << "Funcion para ingresar un duenio." << endl;
-    // Implementar l�gica
+    cout << "Ingrese el nombre: ";
+    cin >> nombre;
+    cout << "Ingrese su numero de cedula: ";
+    cin >> cedula;
+    Persona* nuevoDueno = new Dueno(cedula, nombre);
+
 }
 
 void InterfazDeUsuario::ingresarMascota() {

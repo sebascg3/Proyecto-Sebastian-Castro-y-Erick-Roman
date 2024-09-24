@@ -6,7 +6,7 @@ private:
 	int can;
 	int tam;
 public:
-coleccionMascotas(int);
+coleccionMascotas();
 ~coleccionMascotas();
 bool ingresarMascota(Mascota&);
 string tostring();

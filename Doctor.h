@@ -1,30 +1,35 @@
 #pragma once
-#include "Especialidad.h"
-#include "coleccionEspecialidad.h"
+
 #include <string>
-#include "Mascota.h"
+#include "coleccionMascotas.h"
 #include "horario.h"
-#include <vector>
+#include "Persona.h"
+
 using namespace std;
 
-class Doctor {
+class Doctor : public Persona {
 private:
-    string nombre;
     horario* agenda;
-    Especialidad* especializacion;
-    vector<Mascota*> pacientes;
+    coleccionMascotas* pacientes;
+ 
 public:
-    Doctor(string nom, Especialidad& esp);
-
-    string getNombre()const;
-    void setNombre(string nom);
-    string getEspecializacion()const; 
-    void setEspecializacion(Especialidad* esp);
-    horario* getAgenda();
-
-    void agregarPaciente(Mascota* nuevaMascota);
-    string buscarPacientes() const;
-
-    string mostrarAgenda();
-    string toString()const;
+    Doctor(string, string);
+    ~Doctor();
+    horario* getagenda();
+    coleccionMascotas* getMascotas();
+    void setmascotas(coleccionMascotas*);
+    bool ingresaMascota(Mascota& m);
+    Mascota* buscarMascotaNombre(string n);
+    coleccionMascotas* getmascotas();
+    string toStringMascotas();
+    coleccionMascotas* getpacientes();
+    void agregarpaciente(Mascota& nuevaMascota);
+    string buscarPacientes() ;
+    string mostraragenda();
+    string toStringDueno();
+    string toString() ;
+    void eliminarhoracita(string, string);
+    void liberarhoracita(string a, string b);
+    string mostrarPacientes();
+    string listarMascotas();
 };

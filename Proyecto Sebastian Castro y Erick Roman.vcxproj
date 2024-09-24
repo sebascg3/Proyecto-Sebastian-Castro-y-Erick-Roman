@@ -131,18 +131,21 @@
     <ClInclude Include="ColeccionCitas.h" />
     <ClInclude Include="coleccionEspecialidad.h" />
     <ClInclude Include="coleccionMascotas.h" />
+    <ClInclude Include="ColeccionPersonas.h" />
     <ClInclude Include="Doctor.h" />
     <ClInclude Include="Dueno.h" />
     <ClInclude Include="Especialidad.h" />
     <ClInclude Include="horario.h" />
     <ClInclude Include="InterfazDeUsuario.h" />
     <ClInclude Include="Mascota.h" />
+    <ClInclude Include="Persona.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cita.cpp" />
     <ClCompile Include="ColeccionCitas.cpp" />
     <ClCompile Include="coleccionEspecialidad.cpp" />
     <ClCompile Include="coleccionMascotas.cpp" />
+    <ClCompile Include="ColeccionPersonas.cpp" />
     <ClCompile Include="Doctor.cpp" />
     <ClCompile Include="Dueno.cpp" />
     <ClCompile Include="Especialidad.cpp" />
@@ -150,6 +153,7 @@
     <ClCompile Include="InterfazDeUsuario.cpp" />
     <ClCompile Include="Mascota.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Persona.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

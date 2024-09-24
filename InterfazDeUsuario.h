@@ -1,11 +1,12 @@
 #pragma once
 #include <iostream>
 #include <string>
-#include <vector>
 #include "ColeccionCitas.h"
 #include "Doctor.h"
 #include "Dueno.h"
-
+#include "coleccionEspecialidad.h"
+#include "coleccionMascotas.h"
+#include "ColeccionPersonas.h"
 using namespace std;
 
 class InterfazDeUsuario{

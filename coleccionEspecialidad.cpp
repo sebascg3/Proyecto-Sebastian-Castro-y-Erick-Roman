@@ -1,52 +1,57 @@
 #include "coleccionEspecialidad.h"
+#define maximo 40
+coleccionEspecialidad::coleccionEspecialidad() {
+	tam = maximo;
+	can = 0;
+	Especialidades = new Especialidad * [tam];
+}
+coleccionEspecialidad::~coleccionEspecialidad() {
+	delete[] Especialidades;
+}
+bool coleccionEspecialidad::Insertarespecialidad(Especialidad& nuevaesp) {
+	for (int i = 0; i < can; i++) {
+		if (Especialidades[i] != nullptr && Especialidades[i]->getNombreEsp() == nuevaesp.getNombreEsp()) {
 
-ColeccionEspecialidad::ColeccionEspecialidad(int t){
-    tam = t;
-    can = 0;
-    especialidades = new Especialidad * [tam];
-        for (int i = 0; i < tam; i++) {
-	    especialidades[i] = nullptr;
-        }
+			return false;
+
+		}
+	}
+	if (can < tam) {
+
+		Especialidades[can] = (Especialidad*)&nuevaesp;
+		can++;
+		return true;
+	}
+	return false;
+}
+string coleccionEspecialidad::mostrarEspecialidades() {
+	stringstream s;
+	for (int i = 0; i < can; i++) {
+		if (Especialidades[i] != nullptr) {
+			s  << i + 1 << " " << Especialidades[i]->getNombreEsp() << endl;
+
+		}
+
+	}
+	return s.str();
 
 }
+string coleccionEspecialidad::mostrarDoctorporEspecialidades(string nombreesp) {
+	stringstream s;
 
-ColeccionEspecialidad::~ColeccionEspecialidad() {
-	delete[]especialidades;
+	for (int i = 0; i < can; i++) {
+		if (Especialidades[i] != nullptr && Especialidades[i]->getNombreEsp() == nombreesp) {
+			s << Especialidades[i]->mostrardoctoresporEspecialidad();
+		}
+
+	}
+	return s.str();
 }
-
-bool ColeccionEspecialidad::agregarEspecialidad(Especialidad & e){
-    for (int i = 0; i < can; i++) {
-	    if (especialidades[i] != nullptr && especialidades[i]->getNombre() == e.getNombre()) {
-		return false;
-	    }
-    }
-if(can< tam){
-    especialidades[can] = new Especialidad(e);
-    can++;
-    return true;
-    }else{
-        return false;
-        }
-}
-
-string ColeccionEspecialidad::mostrarEspecialidades(){
-    stringstream s;
-    for (int i = 0; i < can; i++) {
-	    if (especialidades[i] != nullptr) {
-		    s << "#" << i+1 <<" "<<especialidades[i]->toString() << endl;
-            return s.str();
-        }
-    }
-}
-
-string ColeccionEspecialidad::DoctorporEspecialidades(string e){
-    stringstream s;
-
-    for (int i = 0; i < can; i++) {
-        if (especialidades[i] != nullptr && e == especialidades[i]->getNombre()) {
-            //s << especialidades[i]->mostrarDoctoresPorEspecialidad();
-        }
-
-    }
-    return s.str();
+Especialidad* coleccionEspecialidad::buscarespecialidad(string nombre) {
+	for (int i = 0; i < can; i++) {
+		if (Especialidades[i] != nullptr && Especialidades[i]->getNombreEsp() == nombre) {
+			return Especialidades[i];
+		}
+	}
+	return nullptr;
 }

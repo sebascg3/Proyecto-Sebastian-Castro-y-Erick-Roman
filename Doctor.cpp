@@ -1,49 +1,76 @@
 #include "Doctor.h"
+#define cm 100
 
-Doctor::Doctor(string nom, Especialidad& esp) : nombre(nom), especializacion(&esp) {
-    agenda = new horario();
+Doctor::Doctor(string ced, string nom) : Persona(ced, nom), agenda(new horario()),pacientes(new coleccionMascotas()){
+
+}
+  
+Doctor::~Doctor() {
+    delete agenda;
+    
 }
 
-string Doctor::getNombre() const{
-    return this->nombre;
-}
-
-void Doctor::setNombre(string nom) {
-    this->nombre = nom;
-}
-
-string Doctor::getEspecializacion() const{
-    return this->especializacion->getNombre();
-}
-void Doctor::setEspecializacion(Especialidad* esp) {
-    this->especializacion = esp;
-}
-
-horario* Doctor::getAgenda()
-{
+horario* Doctor::getagenda() {
     return agenda;
 }
 
-void Doctor::agregarPaciente(Mascota* nuevaMascota){
-    pacientes.push_back(nuevaMascota);
+coleccionMascotas* Doctor::getMascotas() {
+    return nullptr;
 }
 
-string Doctor::buscarPacientes() const{
+string Doctor::toStringMascotas() {
     stringstream s;
-    for (auto& mascota : pacientes) {
-        s << mascota->toString() << endl;
-    }
+   s<< pacientes->tostring();
+    
     return s.str();
 }
-string Doctor::mostrarAgenda() {
+
+coleccionMascotas* Doctor::getpacientes(){
+    return pacientes;
+}
+
+string Doctor::toStringDueno() {
+    return "";
+}
+
+void Doctor::agregarpaciente(Mascota& nuevaMascota) {
+    pacientes->ingresarMascota(nuevaMascota);
+}
+
+string Doctor::buscarPacientes()  {
+    stringstream s;
+    
+    return s.str();
+}
+
+string Doctor::mostraragenda() {
     stringstream s;
     s << agenda->mostrarHorario();
     return s.str();
 }
-string Doctor::toString()const{
+
+string Doctor::toString()  {
     stringstream s;
-    s << "Doctor: " << this->getNombre() << endl;
-    s << "Especialización: " << this->getEspecializacion() << endl;
+    s << Persona::toString();
     s << "Pacientes:\n" << buscarPacientes();
     return s.str();
 }
+void  Doctor::eliminarhoracita(string a, string b) {
+//
+}
+void Doctor::liberarhoracita(string a, string b) {
+    //
+}
+string Doctor::mostrarPacientes() {
+    stringstream s;
+    s << pacientes->tostring();
+    return s.str();
+
+}
+string Doctor::listarMascotas() {
+    return "";
+}
+void Doctor::setmascotas(coleccionMascotas*) {}
+bool Doctor::ingresaMascota(Mascota& m) { return false; }
+Mascota* Doctor::buscarMascotaNombre(string n) { return nullptr; }
+coleccionMascotas* Doctor::getmascotas() { return nullptr; }
