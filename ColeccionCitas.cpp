@@ -10,7 +10,7 @@ ColeccionCitas::~ColeccionCitas() {
     for (int i = 0; i < can; ++i) {
         delete citas[i];  
     }
-    delete[] citas; 
+    delete[] citas;
 }
 void ColeccionCitas::agregarCita(Cita* cita) {
     if (cita == nullptr || cita->getDia() < 1 || cita->getDia() > 6) {
