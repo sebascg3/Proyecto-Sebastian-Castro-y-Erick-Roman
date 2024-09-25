@@ -17,6 +17,16 @@ string Cita::getHora() const {
     return hora;
 }
 
+Persona* Cita::getDuenoPaciente()
+{
+    return DuenoPaciente;
+}
+Mascota* Cita::getPacienteCita() { 
+    return paciente; 
+}
+Persona* Cita::getDoctor(){
+    return Doctor;
+}
 void Cita::setDia(int d) {
     dia = d;
 }

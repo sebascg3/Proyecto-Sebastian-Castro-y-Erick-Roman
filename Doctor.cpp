@@ -45,7 +45,7 @@ string Doctor::buscarPacientes()  {
 
 string Doctor::mostraragenda() {
     stringstream s;
-    s << agenda->mostrarHorario();
+    s << agenda->toStringHorario();
     return s.str();
 }
 

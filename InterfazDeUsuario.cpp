@@ -1,6 +1,6 @@
 #include "InterfazDeUsuario.h"
 
-void InterfazDeUsuario::mostrarMenuPrincipal() {
+void InterfazDeUsuario::mostrarMenuPrincipal(AdmHospital& ah) {
     int opcion;
     do {
         system("cls");
@@ -13,14 +13,14 @@ void InterfazDeUsuario::mostrarMenuPrincipal() {
 
         switch (opcion) {
         case 1:
-            mostrarSubmenuAdministracion();
+            mostrarSubmenuAdministracion(ah);
             
             break;
         case 2:
-            mostrarSubmenuControlCitas();
+            mostrarSubmenuControlCitas(ah);
             break;
         case 3:
-            mostrarSubmenuBusquedasYListados();
+            mostrarSubmenuBusquedasYListados(ah);
             break;
         default:
             cout << "Opcion no valida, intente nuevamente." << endl;
@@ -29,7 +29,7 @@ void InterfazDeUsuario::mostrarMenuPrincipal() {
     } while (opcion != 0);
 }
 
-void InterfazDeUsuario::mostrarSubmenuAdministracion() {
+void InterfazDeUsuario::mostrarSubmenuAdministracion(AdmHospital& ah) {
     int opcion;
     do {
         system("cls");
@@ -45,16 +45,16 @@ void InterfazDeUsuario::mostrarSubmenuAdministracion() {
         switch (opcion) {
         case 1:
         
-            ingresarEspecialidad();
+            ingresarEspecialidad(ah);
             break;
         case 2:
-            ingresarDoctor();
+            ingresarDoctor(ah);
             break;
         case 3:
-            ingresarDueno();
+            ingresarDueno(ah);
             break;
         case 4:
-            ingresarMascota();
+            ingresarMascota(ah);
             break;
         case 0:
             cout << "Regresando al Menu Principal..." << endl;
@@ -66,7 +66,7 @@ void InterfazDeUsuario::mostrarSubmenuAdministracion() {
     } while (opcion != 0);
 }
 
-void InterfazDeUsuario::mostrarSubmenuControlCitas() {
+void InterfazDeUsuario::mostrarSubmenuControlCitas(AdmHospital& ah) {
     int opcion;
     do {
         system("cls");
@@ -81,16 +81,16 @@ void InterfazDeUsuario::mostrarSubmenuControlCitas() {
 
         switch (opcion) {
         case 1:
-            sacarCita();
+            sacarCita(ah);
             break;
         case 2:
-            cancelarCita();
+            cancelarCita(ah);
             break;
         case 3:
-            mostrarCalendarioCitasPorDoctor();
+            mostrarCalendarioCitasPorDoctor(ah);
             break;
         case 4:
-            mostrarCitasPorDueno();
+            mostrarCitasPorDueno(ah);
             break;
         case 0:
             cout << "Regresando al Menu Principal..." << endl;
@@ -102,7 +102,7 @@ void InterfazDeUsuario::mostrarSubmenuControlCitas() {
     } while (opcion != 0);
 }
 
-void InterfazDeUsuario::mostrarSubmenuBusquedasYListados() {
+void InterfazDeUsuario::mostrarSubmenuBusquedasYListados(AdmHospital& ah) {
     int opcion;
     do {
         system("cls");
@@ -117,16 +117,16 @@ void InterfazDeUsuario::mostrarSubmenuBusquedasYListados() {
 
         switch (opcion) {
         case 1:
-            mostrarListadoEspecialidades();
+            mostrarListadoEspecialidades(ah);
             break;
         case 2:
-            mostrarDoctoresPorEspecialidad();
+            mostrarDoctoresPorEspecialidad(ah);
             break;
         case 3:
-            mostrarDuenosConMascotas();
+            mostrarDuenosConMascotas(ah);
             break;
         case 4:
-            mostrarPacientesPorDoctor();
+            mostrarPacientesPorDoctor(ah);
             break;
         case 0:
             cout << "Regresando al Menu Principal..." << endl;
@@ -138,26 +138,49 @@ void InterfazDeUsuario::mostrarSubmenuBusquedasYListados() {
     } while (opcion != 0);
 }
 
-void InterfazDeUsuario::ingresarEspecialidad() {
+void InterfazDeUsuario::ingresarEspecialidad(AdmHospital& ah) {
 	system("cls");
     string esp;
     cout << "Funcion para ingresar una especialidad." << endl;
     cout << "Ingrese especialidad: ";
     cin >> esp;
+    Especialidad* nuevaEspecialidad = new Especialidad(esp);
+
+    if (ah.ingresarEspecialidad(*nuevaEspecialidad)) {
+        cout << "Especialidad '" << esp << "' añadida correctamente." << endl;
+    }
+    else {
+        cout << "Error: La especialidad '" << esp << "' ya existe." << endl;
+        delete nuevaEspecialidad;
+    }
 }
 
-void InterfazDeUsuario::ingresarDoctor() {
+
+void InterfazDeUsuario::ingresarDoctor(AdmHospital& ah) {
 	system("cls");
-    string cedula, nombre;
+    string cedula, nombre, especialidad;
     cout << "Funcion para ingresar un doctor por especialidad." << endl;
     cout << "Ingrese el nombre: ";
     cin >> nombre;
     cout << "Ingrese su numero de cedula: ";
     cin >> cedula;
+    cout << "Ingrese su Especialidad: ";
+    cin >> especialidad;
     Persona* nuevoDoctor = new Doctor(cedula, nombre);
+    Especialidad* esp1 = ah.buscarEspecialidad(especialidad);
+    if (esp1 == nullptr) {
+        cout << "No se ha registrado la Especialidad. Intente de nuevo." << endl;
+        delete nuevoDoctor;
+    }
+    else if (esp1->insertarDoc(*nuevoDoctor) && ah.agregarDoctor(*nuevoDoctor)) {
+        cout << "Fue exitoso el ingreso del doctor." << endl;
+    }
+    else {
+        cout << "Hubo un error al ingresar al Doctor." << endl;
+    }
 }
 
-void InterfazDeUsuario::ingresarDueno() {
+void InterfazDeUsuario::ingresarDueno(AdmHospital& ah) {
 	system("cls");
     string nombre, cedula;
     cout << "Funcion para ingresar un duenio." << endl;
@@ -169,55 +192,55 @@ void InterfazDeUsuario::ingresarDueno() {
 
 }
 
-void InterfazDeUsuario::ingresarMascota() {
+void InterfazDeUsuario::ingresarMascota(AdmHospital& ah) {
 	system("cls");
     cout << "Funcion para ingresar una mascota por duenio." << endl;
     // Implementar l�gica
 }
 
-void InterfazDeUsuario::sacarCita() {
+void InterfazDeUsuario::sacarCita(AdmHospital& ah) {
     system("cls");
     cout << "Funcion para sacar una cita." << endl;
     // Implementar l�gica
 }
 
-void InterfazDeUsuario::cancelarCita() {
+void InterfazDeUsuario::cancelarCita(AdmHospital& ah) {
 	system("cls");
     cout << "Funcion para cancelar una cita." << endl;
     // Implementar l�gica
 }
 
-void InterfazDeUsuario::mostrarCalendarioCitasPorDoctor() {
+void InterfazDeUsuario::mostrarCalendarioCitasPorDoctor(AdmHospital& ah) {
 	system("cls");
     cout << "Funcion para mostrar calendario de citas por doctor." << endl;
     // Implementar l�gica
 }
 
-void InterfazDeUsuario::mostrarCitasPorDueno() {
+void InterfazDeUsuario::mostrarCitasPorDueno(AdmHospital& ah) {
 	system("cls");
     cout << "Funcion para mostrar citas por duenio." << endl;
     // Implementar l�gica
 }
 
-void InterfazDeUsuario::mostrarListadoEspecialidades() {
+void InterfazDeUsuario::mostrarListadoEspecialidades(AdmHospital& ah) {
 	system("cls");
     cout << "Funcion para mostrar el listado de especialidades." << endl;
     // Implementar l�gica
 }
 
-void InterfazDeUsuario::mostrarDoctoresPorEspecialidad() {
+void InterfazDeUsuario::mostrarDoctoresPorEspecialidad(AdmHospital& ah) {
 	system("cls");
     cout << "Funcion para mostrar los doctores por especialidad." << endl;
     // Implementar l�gica
 }
 
-void InterfazDeUsuario::mostrarDuenosConMascotas() {
+void InterfazDeUsuario::mostrarDuenosConMascotas(AdmHospital& ah) {
 	system("cls");
     cout << "Funcion para mostrar los due�os con sus mascotas." << endl;
     // Implementar l�gica
 }
 
-void InterfazDeUsuario::mostrarPacientesPorDoctor() {
+void InterfazDeUsuario::mostrarPacientesPorDoctor(AdmHospital& ah) {
 	system("cls");
     cout << "Funcion para mostrar pacientes por doctor." << endl;
     // Implementar l�gica

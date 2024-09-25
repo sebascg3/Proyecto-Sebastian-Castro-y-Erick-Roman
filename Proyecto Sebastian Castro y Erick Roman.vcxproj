@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AdmHospital.h" />
     <ClInclude Include="Cita.h" />
     <ClInclude Include="ColeccionCitas.h" />
     <ClInclude Include="coleccionEspecialidad.h" />
@@ -141,6 +142,7 @@
     <ClInclude Include="Persona.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdmHospital.cpp" />
     <ClCompile Include="Cita.cpp" />
     <ClCompile Include="ColeccionCitas.cpp" />
     <ClCompile Include="coleccionEspecialidad.cpp" />

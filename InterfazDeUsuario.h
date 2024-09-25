@@ -7,27 +7,28 @@
 #include "coleccionEspecialidad.h"
 #include "coleccionMascotas.h"
 #include "ColeccionPersonas.h"
+#include "AdmHospital.h"
 using namespace std;
 
 class InterfazDeUsuario{
 public:
-    void mostrarMenuPrincipal();
-    void mostrarSubmenuAdministracion();
-    void mostrarSubmenuControlCitas();
-    void mostrarSubmenuBusquedasYListados();
+    void mostrarMenuPrincipal(AdmHospital& ah);
+    void mostrarSubmenuAdministracion(AdmHospital&);
+    void mostrarSubmenuControlCitas(AdmHospital&);
+    void mostrarSubmenuBusquedasYListados(AdmHospital&);
 
-    void ingresarEspecialidad();
-    void ingresarDoctor();
-    void ingresarDueno();
-    void ingresarMascota();
+    void ingresarEspecialidad(AdmHospital&);
+    void ingresarDoctor(AdmHospital&);
+    void ingresarDueno(AdmHospital&);
+    void ingresarMascota(AdmHospital&);
 
-    void sacarCita();
-    void cancelarCita();
-    void mostrarCalendarioCitasPorDoctor();
-    void mostrarCitasPorDueno();
+    void sacarCita(AdmHospital&);
+    void cancelarCita(AdmHospital&);
+    void mostrarCalendarioCitasPorDoctor(AdmHospital&);
+    void mostrarCitasPorDueno(AdmHospital&);
 
-    void mostrarListadoEspecialidades();
-    void mostrarDoctoresPorEspecialidad();
-    void mostrarDuenosConMascotas();
-    void mostrarPacientesPorDoctor();
+    void mostrarListadoEspecialidades(AdmHospital&);
+    void mostrarDoctoresPorEspecialidad(AdmHospital&);
+    void mostrarDuenosConMascotas(AdmHospital&);
+    void mostrarPacientesPorDoctor(AdmHospital&);
 };

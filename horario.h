@@ -4,10 +4,10 @@
 using namespace std;
 class horario {
 private:
-    string dias[6];            
-    string horas[6][12];
+    string Dia[6];            
+    string Hora[6][12];
 public:
     horario();
     ~horario();
-    string mostrarHorario();
+    string toStringHorario();
 };

@@ -1,5 +1,5 @@
 #include "coleccionMascotas.h"
-#define cm 100
+#define cm 50
 coleccionMascotas::coleccionMascotas():can(0), tam(cm) {
     mascotas = new Mascota * [tam];
     for (int i = 0; i < tam; i++) {

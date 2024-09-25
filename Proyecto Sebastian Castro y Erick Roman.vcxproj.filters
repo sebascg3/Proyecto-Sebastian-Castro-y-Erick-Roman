@@ -51,6 +51,9 @@
     <ClInclude Include="coleccionEspecialidad.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="AdmHospital.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Cita.cpp">
@@ -90,6 +93,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="coleccionEspecialidad.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="AdmHospital.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

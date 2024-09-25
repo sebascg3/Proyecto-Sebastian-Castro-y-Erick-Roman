@@ -13,9 +13,11 @@ public:
 	bool agregarDoctor(Persona&);
 	bool ingresarDueno(Persona&);
 	Mascota* buscarMascotaNombre(string, string);
+	bool agregarPersona(Persona& per);
 	string mostrarDuenos();
 	string mostrarDoctores();
 	Persona* buscarPersonaCedula(string);
+	string listarMascotas(string nombreDueno);
 	Persona* buscarPersonaNombre(string);
 };
 

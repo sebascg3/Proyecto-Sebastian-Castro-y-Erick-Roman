@@ -9,10 +9,14 @@ private:
     int tam;
 
 public:
-    ColeccionCitas(int);
+    ColeccionCitas();
     ~ColeccionCitas();
-    void agregarCita(Cita* cita);
-    void eliminarCita(Cita* cita);
+    bool agregarCita(Cita* cita);
+    void redimensionar();
+    string mostrarCitasPorDoctor(string c);
+    bool eliminarCita(Cita* cita);
     bool hayCitaChocante(Cita* cita)const;
+    string mostrarcitasDuenoDoctor(string c, string nd);
+    string CitasPacientes(string n);
     string toString() const;
 };

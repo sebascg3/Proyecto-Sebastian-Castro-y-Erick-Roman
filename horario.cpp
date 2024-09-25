@@ -7,22 +7,22 @@ horario::horario() {
 
     for (int i = 0; i < 6; ++i) {
         for (int j = 0; j < 12; ++j) {
-            horas[i][j] = horasDisponibles[j];
+            Hora[i][j] = horasDisponibles[j];
         }
     }
 }
 
 horario::~horario() {}
 
-string horario::mostrarHorario() {
+string horario::toStringHorario() {
     stringstream s;
     for (int i = 0; i < 6; ++i) {
-        s << dias[i] << " ";
+        s << Dia[i] << " ";
     }
     s << endl;
     for (int j = 0; j < 12; ++j) { 
         for (int i = 0; i < 6; ++i) { 
-            s << horas[i][j] << "\t";
+            s << Hora[i][j] << "\t";
         }
         s << endl;
     }

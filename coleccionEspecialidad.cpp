@@ -1,7 +1,7 @@
 #include "coleccionEspecialidad.h"
-#define maximo 40
+#define cm 50
 coleccionEspecialidad::coleccionEspecialidad() {
-	tam = maximo;
+	tam = cm;
 	can = 0;
 	Especialidades = new Especialidad * [tam];
 }
