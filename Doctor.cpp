@@ -33,7 +33,7 @@ string Doctor::toStringDueno() {
     return "";
 }
 
-void Doctor::agregarpaciente(Mascota& nuevaMascota) {
+bool Doctor::agregarpaciente(Mascota& nuevaMascota) {
     pacientes->ingresarMascota(nuevaMascota);
 }
 

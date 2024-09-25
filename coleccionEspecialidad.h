@@ -1,6 +1,6 @@
 #pragma once
 #include "Especialidad.h"
-class coleccionEspecialidad{
+class coleccionEspecialidad {
 private:
 	Especialidad** Especialidades;
 	int tam;

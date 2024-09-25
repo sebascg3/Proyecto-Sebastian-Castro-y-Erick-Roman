@@ -73,7 +73,7 @@ bool AdmHospital::agregarDoctor(Persona& doctor) {
     return false;
 }
 
-bool AdmHospital::buscarPersonaCedula(string cedula) {
+Persona* AdmHospital::buscarPersonaCedula(string cedula) {
     return ColPersonas->buscarPersonaCedula(cedula);
 }
 

@@ -39,7 +39,7 @@ string Dueno::toStringDueno() {
 }
 
 coleccionMascotas* Dueno::getpacientes() { return nullptr; }
-void Dueno::agregarpaciente(Mascota& m) {}
+bool Dueno::agregarpaciente(Mascota& m) {}
 string Dueno::mostrarPacientes() { return ""; }
 void Dueno::eliminarhoracita(string, string) {}
 string Dueno::mostraragenda() { return ""; }

@@ -5,7 +5,7 @@
 #include "coleccionMascotas.h"
 
 
-class AdmHospital{
+class AdmHospital {
 private:
 	coleccionEspecialidad* ColEspecialidades;
 	ColeccionCitas* ColCitas;
@@ -24,14 +24,14 @@ public:
 	bool ingresarPersonas(Persona&);
 	bool ingresarDueno(Persona&);
 	bool agregarDoctor(Persona&);
-	bool buscarPersonaCedula(string cedula);
+	Persona* buscarPersonaCedula(string cedula);
 	Especialidad* buscarEspecialidad(string especialidad);
 	bool buscarPersonaNombre(string nombre);
 	string mostrarCitasDoctores(string doctores);
 	string mostrarcitasDuenoDoctor(string, string);
 	string mostrarcitasporpaciente(string nombre);
 	string mostrarespecialidades();
-	string mostrarDoctorporEspecialidades(string) ;
+	string mostrarDoctorporEspecialidades(string);
 	string mostrarDuenos();
 };
 

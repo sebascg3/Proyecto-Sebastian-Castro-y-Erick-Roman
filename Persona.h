@@ -19,7 +19,7 @@ public:
 	virtual void setmascotas(coleccionMascotas*) = 0;
 	virtual bool ingresaMascota(Mascota& m) = 0;
 	virtual Mascota* buscarMascotaNombre(string n) = 0;
-	virtual void agregarpaciente(Mascota& m) = 0;
+	virtual bool agregarpaciente(Mascota& m) = 0;
 	virtual string mostrarPacientes() = 0;
 	virtual void eliminarhoracita(string, string) = 0;
 	virtual string mostraragenda() = 0;

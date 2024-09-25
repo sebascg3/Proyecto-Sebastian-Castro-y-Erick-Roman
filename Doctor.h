@@ -11,7 +11,7 @@ class Doctor : public Persona {
 private:
     horario* agenda;
     coleccionMascotas* pacientes;
- 
+
 public:
     Doctor(string, string);
     ~Doctor();
@@ -23,11 +23,11 @@ public:
     coleccionMascotas* getmascotas();
     string toStringMascotas();
     coleccionMascotas* getpacientes();
-    void agregarpaciente(Mascota& nuevaMascota);
-    string buscarPacientes() ;
+    bool agregarpaciente(Mascota& nuevaMascota);
+    string buscarPacientes();
     string mostraragenda();
     string toStringDueno();
-    string toString() ;
+    string toString();
     void eliminarhoracita(string, string);
     void liberarhoracita(string a, string b);
     string mostrarPacientes();

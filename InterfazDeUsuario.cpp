@@ -183,19 +183,50 @@ void InterfazDeUsuario::ingresarDoctor(AdmHospital& ah) {
 void InterfazDeUsuario::ingresarDueno(AdmHospital& ah) {
 	system("cls");
     string nombre, cedula;
-    cout << "Funcion para ingresar un duenio." << endl;
+    cout << "Funcion para ingresar un dueno." << endl;
     cout << "Ingrese el nombre: ";
     cin >> nombre;
     cout << "Ingrese su numero de cedula: ";
     cin >> cedula;
     Persona* nuevoDueno = new Dueno(cedula, nombre);
-
+    if (ah.ingresarDueno(*nuevoDueno)) {
+        cout << "Dueno '" << nombre << "' agregado correctamente." << endl;
+    }
+    else {
+        cout << "Error: El dueno ya existe." << endl;
+        delete nuevoDueno;
+    }
 }
 
 void InterfazDeUsuario::ingresarMascota(AdmHospital& ah) {
-	system("cls");
+    system("cls");
+    string cedulaDueno, nombreMascota, tipoMascota;
+    int edadMascota;
     cout << "Funcion para ingresar una mascota por duenio." << endl;
-    // Implementar l�gica
+    cout << "Ingrese la cedula del dueno: ";
+    cin >> cedulaDueno;
+
+    Persona* dueno = ah.buscarPersonaCedula(cedulaDueno);
+    if (dueno == nullptr) {
+        cout << "Dueno no encontrado." << endl;
+        return;
+    }
+
+    cout << "Ingrese el nombre de la mascota: ";
+    cin >> nombreMascota;
+    cout << "Tipo de Mascota: " << endl;
+    cin >> tipoMascota;
+    cout << "Ingrese la edad de la mascota: ";
+    cin >> edadMascota;
+
+    Mascota* nuevaMascota = new Mascota(nombreMascota, tipoMascota, edadMascota);
+    if (dueno->agregarpaciente(*nuevaMascota)) {
+        cout << "Mascota agregada correctamente." << endl;
+    }
+    else {
+        cout << "Error al agregar la mascota." << endl;
+        delete nuevaMascota;
+    }
 }
 
 void InterfazDeUsuario::sacarCita(AdmHospital& ah) {

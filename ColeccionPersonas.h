@@ -2,7 +2,7 @@
 #include "Doctor.h"
 #include "Dueno.h"
 
-class ColeccionPersonas{
+class ColeccionPersonas {
 private:
 	Persona** personas;
 	int tam;

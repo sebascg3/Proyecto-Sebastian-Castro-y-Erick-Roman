@@ -9,23 +9,23 @@ private:
     coleccionMascotas* MascotaDueno;
 public:
     Dueno(string ced, string nom);
-   ~Dueno();
+    ~Dueno();
     coleccionMascotas* getmascotas();
     void setmascotas(coleccionMascotas*);
-   bool ingresaMascota(Mascota& nuevaMascota);
-   string listarMascotas();
-  
+    bool ingresaMascota(Mascota& nuevaMascota);
+    string listarMascotas();
+
     Mascota* buscarMascotaNombre(string nombredemascota);
     string toString();
 
     string toStringDueno();
 
-   coleccionMascotas* getpacientes();
-   void agregarpaciente(Mascota& m);
-   string mostrarPacientes();
-   void eliminarhoracita(string, string);
-   string mostraragenda();
-   void liberarhoracita(string d, string);
-   horario* getagenda();
-  
+    coleccionMascotas* getpacientes();
+    bool agregarpaciente(Mascota& m);
+    string mostrarPacientes();
+    void eliminarhoracita(string, string);
+    string mostraragenda();
+    void liberarhoracita(string d, string);
+    horario* getagenda();
+
 };

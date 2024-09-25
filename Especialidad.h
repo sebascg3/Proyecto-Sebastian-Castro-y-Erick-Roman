@@ -3,7 +3,7 @@
 #include <iostream>
 #include <sstream>
 using namespace std;
-class Especialidad{
+class Especialidad {
 private:
 
 	string nombreEspecialidad;
